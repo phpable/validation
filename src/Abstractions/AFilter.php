@@ -3,12 +3,11 @@ namespace Able\Validation\Abstractions;
 
 use \Able\Helpers\Src;
 
-use \Able\Prototypes\IArrayable;
 use \Able\Prototypes\IStringable;
 use \Able\Prototypes\TStringable;
 
 abstract class AFilter
-	implements IStringable, IArrayable {
+	implements IStringable {
 
 	use TStringable;
 
@@ -47,16 +46,6 @@ abstract class AFilter
 	 */
 	public final function toString(): string {
 		return $this->message;
-	}
-
-	/**
-	 * @return array
-	 */
-	public final function toArray(): array {
-		return [
-			'filter' => Src::rns(static::class),
-			'argument' => $this->argument,
-		];
 	}
 
 	/**
