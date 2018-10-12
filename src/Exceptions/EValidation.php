@@ -28,7 +28,7 @@ class EValidation extends \Exception {
 	/**
 	 * @return array
 	 */
-	public final function getMessages(){
+	public final function getMessages() {
 		return $this->Decision->toArray();
 	}
 }

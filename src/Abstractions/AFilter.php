@@ -15,7 +15,7 @@ abstract class AFilter
 	/**
 	 * @var string
 	 */
-	private $argument = null;
+	private string $argument = '';
 
 	/**
 	 * @param string $argument
@@ -35,12 +35,12 @@ abstract class AFilter
 	/**
 	 * @var bool
 	 */
-	protected $required = false;
+	protected bool $required = false;
 
 	/**
 	 * @const string
 	 */
- 	protected $message = "The %{name} field is invalid!";
+ 	protected string $message = "The %{name} field is invalid!";
 
 	/**
 	 * @return string
