@@ -18,7 +18,7 @@ class SError extends AStruct
 	/**
 	 * @var array
 	 */
-	protected static $Prototype = ['name', 'message'];
+	protected static array $Prototype = ['name', 'message'];
 
 	/**
 	 * @param string $value
