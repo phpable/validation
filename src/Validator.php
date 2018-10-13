@@ -18,35 +18,37 @@ use \Able\Validation\Structures\SError;
 use \Able\Validation\Utilities\Decision;
 use \Able\Validation\Abstractions\AFilter;
 
+use \Exception;
+
 class Validator {
 
 	/**
 	 * @var array
 	 */
-	private static $Rules = [];
+	private static array $Rules = [];
 
 	/**
 	 * @param string $name
 	 * @param string $class
-	 * @throws \Exception
+	 * @throws Exception
 	 */
 	public static final function register(string $name, string $class): void {
 		$name = strtolower($name);
 
 		if (!Regex::checkVariable($name)) {
-			throw new \Exception(sprintf('Invalid rule name: %s!', $name));
+			throw new Exception(sprintf('Invalid rule name: %s!', $name));
 		}
 
 		if (array_key_exists($name, self::$Rules)) {
-			throw new \Exception(sprintf('Rule with name "%s" is already registered!', $name));
+			throw new Exception(sprintf('Rule with name "%s" is already registered!', $name));
 		}
 
 		if (!class_exists($class)) {
-			throw new \Exception(sprintf('Undefined rule class: %s!', $class));
+			throw new Exception(sprintf('Undefined rule class: %s!', $class));
 		}
 
 		if (!is_subclass_of($class, AFilter::class)) {
-			throw new \Exception(sprintf('Undefined rule class: %s!', $class));
+			throw new Exception(sprintf('Undefined rule class: %s!', $class));
 		}
 
 		self::$Rules[$name] = $class;
@@ -69,7 +71,7 @@ class Validator {
 
 	/**
 	 * @param array $Rules
-	 * @throws \Exception
+	 * @throws Exception
 	 */
 	public function __construct(array $Rules) {
 		foreach ($Rules as $name => $condition) {
@@ -84,7 +86,7 @@ class Validator {
 
 				extract(Regex::create('/^(' . Regex::RE_KEYWORD . '):?(.*)$/')->parse($rule, 'token', 'argument'));
 				if (!array_key_exists($token, self::$Rules)){
-					throw new \Exception(sprintf('Undefined rule: %s!', $token));
+					throw new Exception(sprintf('Undefined rule: %s!', $token));
 				}
 
 				$this->Fields = Arr::improve($this->Fields, $name,
@@ -96,7 +98,7 @@ class Validator {
 	/**
 	 * @param array $Rules
 	 * @return Validator
-	 * @throws \Exception
+	 * @throws Exception
 	 */
 	public final static function create(array $Rules): Validator {
 		return new static($Rules);
@@ -116,7 +118,7 @@ class Validator {
 	/**
 	 * @param array $Data
 	 * @return Decision
-	 * @throws \Exception
+	 * @throws Exception
 	 */
 	public function validate(array $Data): Decision {
 		$Errors = [];
