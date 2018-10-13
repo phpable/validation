@@ -10,7 +10,7 @@ class Greater extends AFilter {
 	/**
 	 * @var bool
 	 */
-	protected $required = true;
+	protected bool $required = true;
 
 	/**
 	 * @var string
