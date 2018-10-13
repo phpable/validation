@@ -15,7 +15,7 @@ class Less extends AFilter {
 	/**
 	 * @var string
 	 */
-	protected $message = 'The %{name} must be at least %{argument}!';
+	protected string $message = 'The %{name} must be at least %{argument}!';
 
 	/**
 	 * @param string $argument

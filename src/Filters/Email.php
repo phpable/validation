@@ -9,7 +9,7 @@ class Email extends AFilter {
 	/**
 	 * @var string
 	 */
-	protected $message = "The %{name} must be a valid email address!";
+	protected string $message = "The %{name} must be a valid email address!";
 
 	/**
 	 * @param string $source

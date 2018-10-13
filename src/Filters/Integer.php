@@ -10,7 +10,7 @@ class Integer extends AFilter {
 	/**
 	 * @var string
 	 */
-	protected $message = "The %{name} must be an integer!";
+	protected string $message = "The %{name} must be an integer!";
 
 	/**
 	 * @param string $source

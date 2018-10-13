@@ -9,7 +9,7 @@ class Url extends AFilter {
 	/**
 	 * @var string
 	 */
-	protected $message = "The %{name} format is invalid!";
+	protected string $message = "The %{name} format is invalid!";
 
 	/**
 	 * @param string $source

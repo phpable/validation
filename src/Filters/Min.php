@@ -15,7 +15,7 @@ class Min extends AFilter {
 	/**
 	 * @var string
 	 */
-	protected $message = 'The %{name} must be at least %{argument} characters!';
+	protected string $message = 'The %{name} must be at least %{argument} characters!';
 
 	/**
 	 * @param string $argument

@@ -15,7 +15,7 @@ class Greater extends AFilter {
 	/**
 	 * @var string
 	 */
-	protected $message = 'The %{name} may not be greater than %{argument}!';
+	protected string $message = 'The %{name} may not be greater than %{argument}!';
 
 	/**
 	 * @param string $argument

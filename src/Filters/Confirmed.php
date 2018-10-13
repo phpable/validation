@@ -10,7 +10,7 @@ class Confirmed extends AFilter {
 	/**
 	 * @var string
 	 */
-	protected $message = "The %{name} confirmation does not match!";
+	protected string $message = "The %{name} confirmation does not match!";
 
 	/**
 	 * @param string $source

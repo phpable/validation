@@ -15,7 +15,7 @@ class Max extends AFilter {
 	/**
 	 * @var string
 	 */
-	protected $message = 'The %{name} may not be greater than %{argument} characters!';
+	protected string $message = 'The %{name} may not be greater than %{argument} characters!';
 
 	/**
 	 * @param string $argument
