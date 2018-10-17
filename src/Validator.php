@@ -133,18 +133,20 @@ class Validator {
 		}
 
 		foreach ($Data as $name => $value){
-			if (array_key_exists($name, $this->Fields)){
-				foreach ($this->Fields[$name] as $Filter) {
 
+			if (!is_null($value)
+				&& array_key_exists($name, $this->Fields)){
+
+				foreach ($this->Fields[$name] as $Filter) {
 					if (!$Filter->check($Data[$name], iterator_to_array(call_user_func(function (array $Source) use ($name, $Data) {
 						foreach ($Source as $key => $value) {
 							if (preg_match('/^' . preg_quote($name, '/') . '[_-]+(.*)/', $key, $Macthes)) {
 								yield $Macthes[1] => $value;
 							}
 						}}, $Data)))) {
+
 							array_push($Errors, new SError($name,
-								$this->parseMessage($Filter,
-									array_merge($Filter->toArray(), ['name' => $name, 'value' => $Data[$name]]))));
+								$this->parseMessage($Filter, ['name' => $name, 'value' => $Data[$name]])));
 					}
 				}
 			}

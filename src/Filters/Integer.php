@@ -1,9 +1,10 @@
 <?php
 namespace Able\Validation\Filters;
 
-use Able\Reglib\Regex;
-use \Able\Validation\Abstractions\AFilter;
+use \Able\Reglib\Regex;
 use \Able\Helpers\Src;
+
+use \Able\Validation\Abstractions\AFilter;
 
 class Integer extends AFilter {
 

@@ -17,6 +17,8 @@ class Email extends AFilter {
 	 * @return bool
 	 */
 	public final function check(string $source, array $Related = []): bool {
+		_dumpe(func_num_args());
+
 		return (bool)filter_var($source, FILTER_VALIDATE_EMAIL);
 	}
 }
