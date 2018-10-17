@@ -5,6 +5,8 @@ use \Able\Validation\Abstractions\AFilter;
 use \Able\Helpers\Src;
 use \Able\Reglib\Regex;
 
+use \Exception;
+
 class Min extends AFilter {
 
 	/**
@@ -19,11 +21,11 @@ class Min extends AFilter {
 
 	/**
 	 * @param string $argument
-	 * @throws \Exception
+	 * @throws Exception
 	 */
 	public final function setArgument(string $argument): void {
 		if (!Regex::checkNumber($argument) || (int)$argument < 0) {
-			throw new \Exception(sprintf('Invalid argument for function min: %s!', $argument));
+			throw new Exception(sprintf('Invalid argument for function min: %s!', $argument));
 		}
 
 		parent::setArgument($argument);

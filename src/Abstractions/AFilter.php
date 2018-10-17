@@ -6,15 +6,17 @@ use \Able\Helpers\Src;
 use \Able\Prototypes\IStringable;
 use \Able\Prototypes\TStringable;
 
+use \Exception;
+
 abstract class AFilter
 	implements IStringable {
 
 	use TStringable;
 
 	/**
-	 * @var string
+	 * @var string|null
 	 */
-	private string $argument = '';
+	private ?string $argument = null;
 
 	/**
 	 * @param string $argument
@@ -50,11 +52,11 @@ abstract class AFilter
 
 	/**
 	 * @param string|null $argument
-	 * @throws \Exception
+	 * @throws Exception
 	 */
-	public final function __construct(string $argument = null) {
+	public final function __construct(?string $argument = null) {
 		if ($this->required && is_null($argument)){
-			throw new \Exception("The argument is required!");
+			throw new Exception("The argument is required!");
 		}
 
 		if (!is_null($argument)) {
