@@ -1,0 +1,25 @@
+{
+	"name": "able/validation",
+	"type": "library",
+	"keywords": ["phpable", "validation"],
+	"description": "phpABLE data validation library",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "hacpaka",
+			"email": "hacpaka@eggbe.com"
+		}
+	],
+	"require": {
+		"php": ">=7.2.0",
+		"able/statics": "1.0.*",
+		"able/helpers": "dev-master",
+		"able/regexp": "dev-master",
+		"able/struct": "dev-master"
+	},
+	"autoload": {
+		"psr-4": {
+			"Able\\Validation\\": "src/"
+		}
+	}
+}
