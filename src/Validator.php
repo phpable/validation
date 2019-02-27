@@ -121,9 +121,11 @@ class Validator {
 		$Errors = [];
 
 		foreach ($this->Required as $name){
-			if (!array_key_exists($name, $Data)){
+			if (empty($Data[$name])){
 				array_push($Errors, new SError($name,
 					sprintf('The %s field is required!', $name)));
+
+				unset($Data[$name]);
 			}
 		}
 

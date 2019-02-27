@@ -2,6 +2,7 @@
 namespace Able\Validation\Utilities;
 
 use \Able\Helpers\Str;
+use \Able\Helpers\Arr;
 
 use \Able\Prototypes\ICountable;
 use \Able\Prototypes\IArrayable;
@@ -64,6 +65,20 @@ class Decision
 	public final function toArray(): array {
 		return array_map(function(SError $Error){
 			return $Error->message; }, $this->Errors);
+	}
+
+	/**
+	 * @return SError
+	 */
+	public final function first(): SError {
+		return Arr::first($this->Errors);
+	}
+
+	/**
+	 * @return SError[]
+	 */
+	public final function errors(): array {
+		return  $this->toArray();
 	}
 
 	/**
