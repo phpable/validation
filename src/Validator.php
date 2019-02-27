@@ -93,6 +93,15 @@ class Validator {
 	}
 
 	/**
+	 * @param array $Rules
+	 * @return Validator
+	 * @throws \Exception
+	 */
+	public final static function create(array $Rules): Validator {
+		return new static($Rules);
+	}
+
+	/**
 	 * @param string $message
 	 * @param array $Values
 	 * @return string
