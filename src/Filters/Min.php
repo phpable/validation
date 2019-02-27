@@ -31,9 +31,10 @@ class Min extends AFilter {
 
 	/**
 	 * @param string $source
+	 * @param array $Related
 	 * @return bool
 	 */
-	public final function check(string $source): bool {
+	public final function check(string $source, array $Related = []): bool {
 		return strlen($source) >= (int)$this->getArgument();
 	}
 }

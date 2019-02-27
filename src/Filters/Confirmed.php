@@ -3,13 +3,14 @@ namespace Able\Validation\Filters;
 
 use \Able\Validation\Abstractions\AFilter;
 use \Able\Helpers\Src;
+use \Able\Helpers\Arr;
 
-class Email extends AFilter {
+class Confirmed extends AFilter {
 
 	/**
 	 * @var string
 	 */
-	protected $message = "The %{name} must be a valid email address!";
+	protected $message = "The %{name} confirmation does not match!";
 
 	/**
 	 * @param string $source
@@ -17,6 +18,6 @@ class Email extends AFilter {
 	 * @return bool
 	 */
 	public final function check(string $source, array $Related = []): bool {
-		return (bool)filter_var($source, FILTER_VALIDATE_EMAIL);
+		return isset($Related['confirmation']) && $Related['confirmation'] == $source;
 	}
 }

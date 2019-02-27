@@ -75,7 +75,8 @@ abstract class AFilter
 
 	/**
 	 * @param string $source
+	 * @param array $Related
 	 * @return bool
 	 */
-	abstract function check(string $source): bool;
+	abstract function check(string $source, array $Related = []): bool;
 }

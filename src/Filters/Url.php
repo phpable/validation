@@ -13,9 +13,10 @@ class Url extends AFilter {
 
 	/**
 	 * @param string $source
+	 * @param array $Related
 	 * @return bool
 	 */
-	public final function check(string $source): bool {
+	public final function check(string $source, array $Related = []): bool {
 		return (bool)filter_var($source, FILTER_VALIDATE_URL);
 	}
 }

@@ -12,6 +12,7 @@ use \Able\Validation\Filters\Less;
 use \Able\Validation\Filters\Email;
 use \Able\Validation\Filters\Integer;
 use \Able\Validation\Filters\Greater;
+use \Able\Validation\Filters\Confirmed;
 
 use \Able\Validation\Structures\SError;
 use \Able\Validation\Utilities\Decision;
@@ -133,10 +134,15 @@ class Validator {
 			if (array_key_exists($name, $this->Fields)){
 				foreach ($this->Fields[$name] as $Filter) {
 
-					if (!$Filter->check($Data[$name])) {
-						array_push($Errors, new SError($name,
-							$this->parseMessage($Filter,
-								array_merge($Filter->toArray(), ['name' => $name, 'value' => $Data[$name]]))));
+					if (!$Filter->check($Data[$name], iterator_to_array(call_user_func(function (array $Source) use ($name, $Data) {
+						foreach ($Source as $key => $value) {
+							if (preg_match('/^' . preg_quote($name, '/') . '[_-]+(.*)/', $key, $Macthes)) {
+								yield $Macthes[1] => $value;
+							}
+						}}, $Data)))) {
+							array_push($Errors, new SError($name,
+								$this->parseMessage($Filter,
+									array_merge($Filter->toArray(), ['name' => $name, 'value' => $Data[$name]]))));
 					}
 				}
 			}
@@ -144,7 +150,6 @@ class Validator {
 
 		return new Decision($Errors);
 	}
-
 }
 
 /** @noinspection PhpUnhandledExceptionInspection */
@@ -167,3 +172,6 @@ Validator::register('greater', Greater::class);
 
 /** @noinspection PhpUnhandledExceptionInspection */
 Validator::register('less', Less::class);
+
+/** @noinspection PhpUnhandledExceptionInspection */
+Validator::register('confirmed', Confirmed::class);

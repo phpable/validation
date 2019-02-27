@@ -31,10 +31,10 @@ class Less extends AFilter {
 
 	/**
 	 * @param string $source
+	 * @param array $Related
 	 * @return bool
-	 * @throws \Exception
 	 */
-	public final function check(string $source): bool {
+	public final function check(string $source, array $Related = []): bool {
 		return Regex::checkNumber($source) && (int)$source <= (int)$this->getArgument();
 	}
 }
