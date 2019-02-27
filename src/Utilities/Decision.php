@@ -24,7 +24,7 @@ class Decision
 	/**
 	 * @return bool
 	 */
-	public final function isFailed(): bool {
+	public final function fails(): bool {
 		return count($this->Errors) > 0;
 	}
 
