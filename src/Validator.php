@@ -146,7 +146,7 @@ class Validator {
 						}}, $Data)))) {
 
 							array_push($Errors, new SError($name,
-								$this->parseMessage($Filter, ['name' => $name, 'value' => $Data[$name]])));
+								$this->parseMessage($Filter, ['name' => $name, 'argument' => $Filter->getArgument()])));
 					}
 				}
 			}
