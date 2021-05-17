@@ -2,7 +2,7 @@
 The phpABLE validation library. 
 
 ## Requirements
-* PHP >= 7.4.0
+* PHP >= 8.0.0
 * [able/helpers](https://github.com/phpable/helpers)
 * [able/statics](https://github.com/phpable/statics)
 * [able/struct](https://github.com/phpable/struct)
