@@ -89,8 +89,7 @@ class Validator {
 					throw new Exception(sprintf('Undefined rule: %s!', $token));
 				}
 
-				$this->Fields = Arr::improve($this->Fields, $name,
-					new self::$Rules[$token]($argument));
+				Arr::improve($this->Fields, $name, new self::$Rules[$token]($argument));
 			}
 		}
 	}
